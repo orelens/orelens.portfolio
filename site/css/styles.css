@@ -552,6 +552,10 @@ section { scroll-margin-top: calc(var(--header) + 0.75rem); }
   background: #070814;
 }
 
+.work-media:has(video) {
+  aspect-ratio: 9 / 16;
+}
+
 .work-media img,
 .work-media video {
   width: 100%;
