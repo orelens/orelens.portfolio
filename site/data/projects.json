@@ -1,0 +1,260 @@
+{
+  "caseStudies": [],
+  "concepts": [
+    {
+      "id": "concept-social-monday",
+      "title": "Monday offer post",
+      "category": "social",
+      "kind": "concept",
+      "fictionalBrand": "Concept Cafe",
+      "summary": "A feed-post concept for a fictional cafe. It shows layout, type and colour only.",
+      "media": {
+        "type": "image",
+        "src": "assets/work/concept-social.svg",
+        "alt": "Concept social creative on a dark navy background with the headline A calmer Monday, labelled concept work for the fictional brand Concept Cafe."
+      },
+      "label": "CONCEPT WORK – FICTIONAL BRAND",
+      "credit": "Concept by Orelens · not a real client"
+    },
+    {
+      "id": "concept-ads-hooks",
+      "title": "Two ad hooks",
+      "category": "ads",
+      "kind": "concept",
+      "fictionalBrand": "Concept Clinic",
+      "summary": "A pair of ad layouts for a fictional clinic, made to show how two hooks can share one offer.",
+      "media": {
+        "type": "image",
+        "src": "assets/work/concept-ads.svg",
+        "alt": "Two concept ad cards side by side on a dark background, labelled concept work for the fictional brand Concept Clinic."
+      },
+      "label": "CONCEPT WORK – FICTIONAL BRAND",
+      "credit": "Concept by Orelens · not a real client"
+    },
+    {
+      "id": "concept-poster-open-late",
+      "title": "Open late poster",
+      "category": "posters",
+      "kind": "concept",
+      "fictionalBrand": "Concept Studio",
+      "summary": "An event-poster concept for a fictional studio. Large type, one time, no real venue.",
+      "media": {
+        "type": "image",
+        "src": "assets/work/concept-poster.svg",
+        "alt": "Concept poster with the words Open late and 9 PM, labelled concept work for the fictional brand Concept Studio."
+      },
+      "label": "CONCEPT WORK – FICTIONAL BRAND",
+      "credit": "Concept by Orelens · not a real client"
+    },
+    {
+      "id": "concept-thumbnail-hooks",
+      "title": "Thumbnail study",
+      "category": "thumbnails",
+      "kind": "concept",
+      "fictionalBrand": "Concept Channel",
+      "summary": "A YouTube thumbnail concept for a fictional channel. The large numeral is the hook.",
+      "media": {
+        "type": "image",
+        "src": "assets/work/concept-thumbnail.svg",
+        "alt": "Concept thumbnail with a large number 3 and the words hooks that hold, labelled concept work for the fictional brand Concept Channel."
+      },
+      "label": "CONCEPT WORK – FICTIONAL BRAND",
+      "credit": "Concept by Orelens · not a real client"
+    },
+    {
+      "id": "concept-brand-marks",
+      "title": "Three mark studies",
+      "category": "branding",
+      "kind": "concept",
+      "fictionalBrand": "Concept Mark",
+      "summary": "Three simple mark explorations for a fictional brand. These are not the Orelens logo.",
+      "media": {
+        "type": "image",
+        "src": "assets/work/concept-branding.svg",
+        "alt": "Three abstract mark studies in a row on a dark background, labelled concept work for a fictional brand."
+      },
+      "label": "CONCEPT WORK – FICTIONAL BRAND",
+      "credit": "Concept by Orelens · not a real client"
+    },
+    {
+      "id": "concept-reel-cover",
+      "title": "Reel cover",
+      "category": "reels",
+      "kind": "concept",
+      "fictionalBrand": "Concept Reel",
+      "summary": "A reel-cover concept. The play symbol stands in for an edit. There is no client footage here.",
+      "media": {
+        "type": "image",
+        "src": "assets/work/concept-reels.svg",
+        "alt": "Concept reel cover with a play symbol inside a ring and the words Cut to the offer, labelled concept work, not a client project."
+      },
+      "label": "CONCEPT WORK – FICTIONAL BRAND",
+      "credit": "Concept by Orelens · not a real client"
+    },
+    {
+      "id": "concept-ads-quillmesh-ops",
+      "title": "Let your ops run themselves",
+      "category": "ads",
+      "kind": "concept",
+      "fictionalBrand": "quillmesh",
+      "summary": "A launch-ad concept for the fictional automation brand quillmesh.",
+      "media": {
+        "type": "image",
+        "src": "assets/work/concepts/CONCEPT_Automation_01_2026-10-18.jpg",
+        "alt": "Concept launch ad for a fictional automation brand, quillmesh: Let your ops run themselves, under a glowing node network."
+      },
+      "label": "CONCEPT WORK – FICTIONAL BRAND",
+      "credit": "Concept by Orelens · not a real client"
+    },
+    {
+      "id": "concept-social-auto-handled",
+      "title": "Repetitive tasks? Handled.",
+      "category": "social",
+      "kind": "concept",
+      "fictionalBrand": "quillmesh",
+      "summary": "A benefit-post concept for a fictional automation brand.",
+      "media": {
+        "type": "image",
+        "src": "assets/work/concepts/CONCEPT_Automation_02_2026-10-18.jpg",
+        "alt": "Concept benefit post for a fictional automation brand: a toggle set to AUTO above Repetitive tasks? Handled."
+      },
+      "label": "CONCEPT WORK – FICTIONAL BRAND",
+      "credit": "Concept by Orelens · not a real client"
+    },
+    {
+      "id": "concept-social-set-it-once",
+      "title": "Set it once. It runs daily.",
+      "category": "social",
+      "kind": "concept",
+      "fictionalBrand": "quillmesh",
+      "summary": "A how-it-works concept for a fictional automation brand.",
+      "media": {
+        "type": "image",
+        "src": "assets/work/concepts/CONCEPT_Automation_03_2026-10-18.jpg",
+        "alt": "Concept how-it-works post for a fictional automation brand: a three-step workflow card under Set it once. It runs daily."
+      },
+      "label": "CONCEPT WORK – FICTIONAL BRAND",
+      "credit": "Concept by Orelens · not a real client"
+    },
+    {
+      "id": "concept-realestate-mehrvale-home",
+      "title": "Home, held in light.",
+      "category": "real-estate",
+      "kind": "concept",
+      "fictionalBrand": "Mehrvale Residences",
+      "summary": "A launch-poster concept for Mehrvale Residences, a fictional real-estate brand.",
+      "media": {
+        "type": "image",
+        "src": "assets/work/concepts/realestate_mehrvale_01.jpg",
+        "alt": "Concept launch poster for the fictional real-estate brand Mehrvale Residences, with the line Home, held in light."
+      },
+      "label": "CONCEPT WORK – FICTIONAL BRAND",
+      "credit": "Concept by Orelens · not a real client"
+    },
+    {
+      "id": "concept-realestate-mehrvale-sky",
+      "title": "Every room meets the sky.",
+      "category": "real-estate",
+      "kind": "concept",
+      "fictionalBrand": "Mehrvale Residences",
+      "summary": "A floor-plan feature post for Mehrvale Residences, a fictional real-estate brand.",
+      "media": {
+        "type": "image",
+        "src": "assets/work/concepts/realestate_mehrvale_02.jpg",
+        "alt": "Concept floor-plan feature post for the fictional real-estate brand Mehrvale Residences, with the line Every room meets the sky."
+      },
+      "label": "CONCEPT WORK – FICTIONAL BRAND",
+      "credit": "Concept by Orelens · not a real client"
+    },
+    {
+      "id": "concept-cafe-kettlewise-cold-brew",
+      "title": "Cold brew, warm hello.",
+      "category": "restaurant-cafe",
+      "kind": "concept",
+      "fictionalBrand": "Kettlewise",
+      "summary": "A signature-drink menu card for Kettlewise, a fictional cafe.",
+      "media": {
+        "type": "image",
+        "src": "assets/work/concepts/cafe_kettlewise_01.jpg",
+        "alt": "Concept signature-drink menu card for the fictional cafe Kettlewise, with the line Cold brew, warm hello."
+      },
+      "label": "CONCEPT WORK – FICTIONAL BRAND",
+      "credit": "Concept by Orelens · not a real client"
+    },
+    {
+      "id": "concept-cafe-kettlewise-second-cup",
+      "title": "Second cup's on us.",
+      "category": "restaurant-cafe",
+      "kind": "concept",
+      "fictionalBrand": "Kettlewise",
+      "summary": "A Friday offer poster for Kettlewise, a fictional cafe.",
+      "media": {
+        "type": "image",
+        "src": "assets/work/concepts/cafe_kettlewise_02.jpg",
+        "alt": "Concept Friday offer poster for the fictional cafe Kettlewise, with the line Second cup's on us."
+      },
+      "label": "CONCEPT WORK – FICTIONAL BRAND",
+      "credit": "Concept by Orelens · not a real client"
+    },
+    {
+      "id": "concept-hotel-navrelle-check-in",
+      "title": "Check in. Exhale.",
+      "category": "hotel",
+      "kind": "concept",
+      "fictionalBrand": "Navrelle",
+      "summary": "A booking-post concept for Navrelle, a fictional hotel.",
+      "media": {
+        "type": "image",
+        "src": "assets/work/concepts/hotel_navrelle_01.jpg",
+        "alt": "Concept booking post for the fictional hotel Navrelle, with the line Check in. Exhale."
+      },
+      "label": "CONCEPT WORK – FICTIONAL BRAND",
+      "credit": "Concept by Orelens · not a real client"
+    },
+    {
+      "id": "concept-hotel-navrelle-evenings",
+      "title": "Evenings, by the water.",
+      "category": "hotel",
+      "kind": "concept",
+      "fictionalBrand": "Navrelle",
+      "summary": "A rooftop-pool amenity post for Navrelle, a fictional hotel.",
+      "media": {
+        "type": "image",
+        "src": "assets/work/concepts/hotel_navrelle_02.jpg",
+        "alt": "Concept rooftop-pool amenity post for the fictional hotel Navrelle, with the line Evenings, by the water."
+      },
+      "label": "CONCEPT WORK – FICTIONAL BRAND",
+      "credit": "Concept by Orelens · not a real client"
+    },
+    {
+      "id": "concept-salon-sheerwick-sharper",
+      "title": "Same you. Sharper lines.",
+      "category": "salon",
+      "kind": "concept",
+      "fictionalBrand": "sheerwick",
+      "summary": "An illustrative before-and-after smoothing post for sheerwick, a fictional salon.",
+      "media": {
+        "type": "image",
+        "src": "assets/work/concepts/salon_sheerwick_01.jpg",
+        "alt": "Concept before-and-after smoothing post for the fictional salon sheerwick, with the line Same you. Sharper lines."
+      },
+      "label": "CONCEPT WORK – FICTIONAL BRAND",
+      "credit": "Concept by Orelens · not a real client"
+    },
+    {
+      "id": "concept-salon-sheerwick-menu",
+      "title": "Cut. Colour. Care.",
+      "category": "salon",
+      "kind": "concept",
+      "fictionalBrand": "sheerwick",
+      "summary": "A typographic service-menu poster for sheerwick, a fictional salon.",
+      "media": {
+        "type": "image",
+        "src": "assets/work/concepts/salon_sheerwick_02.jpg",
+        "alt": "Concept typographic service-menu poster for the fictional salon sheerwick, with the lines Cut. Colour. Care."
+      },
+      "label": "CONCEPT WORK – FICTIONAL BRAND",
+      "credit": "Concept by Orelens · not a real client"
+    }
+  ]
+}
