@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://orelens.github.io/orelens.portfolio/sitemap.xml
