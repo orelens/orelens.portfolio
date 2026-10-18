@@ -255,6 +255,40 @@
       },
       "label": "CONCEPT WORK – FICTIONAL BRAND",
       "credit": "Concept by Orelens · not a real client"
+    },
+    {
+      "id": "concept-reels-treabrolabs-whatsapp-ad",
+      "title": "Treabrolabs — AI WhatsApp lead reply ad",
+      "category": "reels",
+      "kind": "concept",
+      "fictionalBrand": "Treabrolabs",
+      "summary": "54s vertical product ad for Treabrolabs, an AI WhatsApp assistant that replies to and qualifies real estate leads for brokers in Dubai.",
+      "media": {
+        "type": "video",
+        "src": "assets/work/concepts/treabrolabs-whatsapp-ad.mp4",
+        "poster": "assets/work/concepts/treabrolabs-whatsapp-ad-poster.jpg",
+        "mime": "video/mp4",
+        "alt": "Vertical concept ad for Treabrolabs. A phone shows an AI WhatsApp assistant replying to a real-estate lead, under the headline Your leads are texting. Are you?"
+      },
+      "label": "CONCEPT WORK – FICTIONAL BRAND",
+      "credit": "Concept by Orelens · not a real client"
+    },
+    {
+      "id": "concept-reels-treabrolabs-1147pm",
+      "title": "Treabrolabs — \"It's 11:47 PM\" lead ad",
+      "category": "reels",
+      "kind": "concept",
+      "fictionalBrand": "Treabrolabs",
+      "summary": "33s vertical ad: a Property Finder lead lands at 11:47 PM and Treabrolabs' AI WhatsApp assistant replies and qualifies it instantly.",
+      "media": {
+        "type": "video",
+        "src": "assets/work/concepts/treabrolabs-lead-1147pm-ad.mp4",
+        "poster": "assets/work/concepts/treabrolabs-lead-1147pm-ad-poster.jpg",
+        "mime": "video/mp4",
+        "alt": "Vertical concept ad for Treabrolabs. A clock reads 11:47 PM beside a Property Finder lead notification, under the headline It's 11:47 PM. Your lead is waiting."
+      },
+      "label": "CONCEPT WORK – FICTIONAL BRAND",
+      "credit": "Concept by Orelens · not a real client"
     }
   ]
 }
