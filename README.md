@@ -39,11 +39,12 @@ Open http://127.0.0.1:8080/site/ for a quick look. Relative links work when the 
 
 ## Logo
 
-Use the official logo files. Do not redraw the ring or the wordmark.
+The on-page mark is the official ring plus the words ORE LENS in Montserrat. Do not put the full horizontal-flare lockup in the header, hero, or footer.
 
 | File | Use |
 |---|---|
-| `site/assets/logo/orelens-logo.webp` and `.png` | Header, hero and footer. Transparent crop of the official mark, for the dark site background. |
+| `site/assets/logo/orelens-ring.png` | On-page mark. The official ring, hollowed so it blends into Midnight, with the words ORE LENS set in Montserrat. |
+| `site/assets/logo/orelens-logo.webp` and `.png` | Official full lockup. Kept for reference. The page does not use it in the header or hero, because the horizontal flare reads as an eye on this background. |
 | `site/assets/logo/orelens-logo-dark.webp` and `.png` | The official mark kept on its dark navy field. |
 | `site/assets/og.png` (and `og.webp`) | Open Graph image. The official logo on that dark field, framed at 1200×630. |
 | `site/assets/favicon-32.png`, `favicon-192.png`, `apple-touch-icon.png`, `site/favicon.ico` | Favicon, cropped from the ring area of the official logo. |
