@@ -1,37 +1,21 @@
 (function () {
   "use strict";
 
-  document.documentElement.classList.add("js");
-
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    document.querySelectorAll(".featured video").forEach(function (video) {
-      video.removeAttribute("autoplay");
-      video.pause();
-    });
-  }
-
-  var CATEGORIES = {
-    all: "All",
-    social: "Social",
-    ads: "Ads",
-    posters: "Posters",
-    thumbnails: "Thumbnails",
-    branding: "Branding",
-    reels: "Reels",
-    "real-estate": "Real estate",
-    "restaurant-cafe": "Restaurant/Cafe",
-    hotel: "Hotel",
-    salon: "Salon"
-  };
-
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
   var navToggle = document.querySelector(".nav-toggle");
   var nav = document.getElementById("site-nav");
+  var header = document.querySelector(".site-header");
+  var heroMark = document.querySelector(".hero-mark");
+  var steps = document.querySelector(".steps");
+  var scrollToY = null;
 
   function setNav(open) {
     if (!navToggle || !nav) return;
     nav.classList.toggle("is-open", open);
     navToggle.setAttribute("aria-expanded", open ? "true" : "false");
     navToggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    document.body.classList.toggle("nav-open", open);
   }
 
   if (navToggle && nav) {
@@ -46,211 +30,309 @@
     });
   }
 
-  var soon = document.getElementById("case-studies-soon");
-  var studiesMount = document.getElementById("case-studies");
-  var conceptsMount = document.getElementById("concept-work");
-  var filters = document.getElementById("work-filters");
-  var status = document.getElementById("work-status");
-  var dialog = document.getElementById("work-dialog");
-  var dialogBody = document.getElementById("work-dialog-body");
-  var dataUrl = "data/projects.json";
-  var activeFilter = "all";
-  var catalog = { caseStudies: [], concepts: [] };
-
-  function text(tag, className, value) {
-    var el = document.createElement(tag);
-    if (className) el.className = className;
-    el.textContent = value;
-    return el;
-  }
-
-  function safeSrc(src) {
-    if (typeof src !== "string") return "";
-    var value = src.trim();
-    var lower = value.toLowerCase();
-    if (!value || lower.indexOf("javascript:") === 0 || lower.indexOf("data:") === 0) return "";
-    return value;
-  }
-
-  function categoryLabel(id) {
-    return CATEGORIES[id] || id;
-  }
-
-  function announce(message) {
-    if (status) status.textContent = message;
-  }
-
-  function mediaElement(item) {
-    var media = item.media || {};
-    var src = safeSrc(media.src);
-    if (!src) return null;
-    if (media.type === "video") {
-      var video = document.createElement("video");
-      video.controls = true;
-      video.preload = "metadata";
-      video.playsInline = true;
-      if (media.poster) video.poster = safeSrc(media.poster);
-      var source = document.createElement("source");
-      source.src = src;
-      source.type = media.mime || "video/mp4";
-      video.appendChild(source);
-      video.appendChild(text("p", null, item.title));
-      return video;
+  function splitWords(el) {
+    if (!el || el.dataset.split === "1") return;
+    var count = { n: 0 };
+    function walk(node) {
+      var children = Array.prototype.slice.call(node.childNodes);
+      children.forEach(function (child) {
+        if (child.nodeType === 3) {
+          var parts = child.textContent.split(/(\s+)/);
+          var frag = document.createDocumentFragment();
+          var wrote = false;
+          parts.forEach(function (part) {
+            if (!part) return;
+            if (/^\s+$/.test(part)) {
+              frag.appendChild(document.createTextNode(" "));
+              wrote = true;
+              return;
+            }
+            var mask = document.createElement("span");
+            mask.className = "word-mask";
+            var word = document.createElement("span");
+            word.className = "word";
+            word.style.setProperty("--i", String(count.n));
+            count.n += 1;
+            word.textContent = part;
+            mask.appendChild(word);
+            frag.appendChild(mask);
+            wrote = true;
+          });
+          if (wrote) child.parentNode.replaceChild(frag, child);
+        } else if (child.nodeType === 1 && !child.classList.contains("word") && !child.classList.contains("word-mask")) {
+          walk(child);
+        }
+      });
     }
-    var img = document.createElement("img");
-    img.src = src;
-    img.alt = media.alt || item.title;
-    img.loading = "lazy";
-    img.decoding = "async";
-    img.width = 1080;
-    img.height = 1350;
-    return img;
+    walk(el);
+    el.dataset.split = "1";
   }
 
-  function openDialog(item) {
-    if (!dialog || !dialogBody) return;
-    dialogBody.replaceChildren();
-    var media = mediaElement(item);
-    if (media) {
-      if (media.tagName === "IMG") media.loading = "eager";
-      dialogBody.appendChild(media);
+  document.querySelectorAll(".words").forEach(splitWords);
+  window.requestAnimationFrame(function () {
+    window.requestAnimationFrame(function () {
+      document.querySelectorAll(".hero .words").forEach(function (el) {
+        el.classList.add("is-in");
+      });
+    });
+  });
+
+  function headerOffset() {
+    return header ? header.offsetHeight + 8 : 0;
+  }
+
+  function anchorY(hash) {
+    if (!hash || hash === "#") return null;
+    if (hash === "#top") return 0;
+    var el = document.querySelector(hash);
+    if (!el) return null;
+    return Math.max(0, el.getBoundingClientRect().top + window.scrollY - headerOffset());
+  }
+
+  function maxScroll() {
+    return Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+  }
+
+  if (!reduce && finePointer) {
+    document.documentElement.classList.add("smooth-scroll");
+    var current = window.scrollY;
+    var target = current;
+    var running = false;
+    var programmatic = false;
+    var lastTime = 0;
+
+    function clamp(value) {
+      return Math.max(0, Math.min(maxScroll(), value));
     }
-    dialogBody.appendChild(text("h2", null, item.title));
-    dialogBody.appendChild(text("p", "work-card-kicker", categoryLabel(item.category)));
-    if (item.kind === "concept") {
-      dialogBody.appendChild(text("p", "concept-pill concept-pill-static", item.label || "CONCEPT WORK – FICTIONAL BRAND"));
-      if (item.fictionalBrand) {
-        dialogBody.appendChild(text("p", null, "Fictional brand: " + item.fictionalBrand + ". Not a client project."));
+
+    function frame(now) {
+      var dt = lastTime ? Math.min(34, now - lastTime) : 16.7;
+      lastTime = now;
+      var ease = 1 - Math.pow(0.86, dt / 16.67);
+      current += (target - current) * ease;
+      if (Math.abs(target - current) < 0.45) {
+        current = target;
+        running = false;
       }
-    } else if (item.client) {
-      dialogBody.appendChild(text("p", null, item.client));
-    }
-    if (item.summary) dialogBody.appendChild(text("p", null, item.summary));
-    if (item.credit) dialogBody.appendChild(text("p", "credit", item.credit));
-    var close = dialog.querySelector(".dialog-close");
-    if (typeof dialog.showModal === "function") {
-      dialog.showModal();
-      if (close) close.focus();
-    }
-  }
-
-  function card(item) {
-    var article = document.createElement("article");
-    article.className = "work-card";
-    article.dataset.category = item.category;
-
-    var frame = document.createElement("div");
-    frame.className = "work-media";
-    var media = mediaElement(item);
-    if (media && media.tagName === "IMG") {
-      var view = document.createElement("button");
-      view.type = "button";
-      view.className = "work-view";
-      view.appendChild(media);
-      var name = item.kind === "concept" ? "View concept: " + item.title : "View project: " + item.title;
-      view.setAttribute("aria-label", name);
-      view.addEventListener("click", function () { openDialog(item); });
-      frame.appendChild(view);
-    } else if (media) {
-      frame.appendChild(media);
+      programmatic = true;
+      window.scrollTo(0, current);
+      programmatic = false;
+      if (running) window.requestAnimationFrame(frame);
     }
 
-    if (item.kind === "concept") {
-      frame.appendChild(text("p", "concept-pill", item.label || "CONCEPT WORK – NOT A CLIENT PROJECT"));
+    function kick() {
+      target = clamp(target);
+      if (!running) {
+        running = true;
+        lastTime = 0;
+        window.requestAnimationFrame(frame);
+      }
     }
-    article.appendChild(frame);
 
-    var body = document.createElement("div");
-    body.className = "work-card-body";
-    body.appendChild(text("p", "work-card-kicker", categoryLabel(item.category)));
-    body.appendChild(text("h3", null, item.title));
-    if (item.kind === "concept" && item.fictionalBrand) {
-      body.appendChild(text("p", null, item.fictionalBrand + " · fictional brand, not a client project."));
-    } else if (item.client) {
-      body.appendChild(text("p", null, item.client));
-    }
-    if (item.summary) body.appendChild(text("p", null, item.summary));
-    if (item.credit) body.appendChild(text("p", "credit", item.credit));
-    article.appendChild(body);
-    return article;
-  }
+    window.addEventListener("wheel", function (event) {
+      if (event.ctrlKey || document.body.classList.contains("nav-open")) return;
+      event.preventDefault();
+      var dy = event.deltaY;
+      if (event.deltaMode === 1) dy *= 16;
+      if (event.deltaMode === 2) dy *= window.innerHeight;
+      target = clamp(target + dy);
+      kick();
+    }, { passive: false });
 
-  function matches(item) {
-    return activeFilter === "all" || item.category === activeFilter;
-  }
+    window.addEventListener("scroll", function () {
+      if (programmatic) return;
+      current = window.scrollY;
+      target = current;
+    }, { passive: true });
 
-  function renderGroup(mount, items, headingText) {
-    if (!mount) return 0;
-    mount.replaceChildren();
-    var visible = items.filter(matches);
-    if (!visible.length) {
-      mount.hidden = true;
-      return 0;
-    }
-    mount.hidden = false;
-    mount.appendChild(text("h3", "work-group-title", headingText));
-    var grid = document.createElement("div");
-    grid.className = "work-grid";
-    visible.forEach(function (item) { grid.appendChild(card(item)); });
-    mount.appendChild(grid);
-    return visible.length;
-  }
-
-  function render() {
-    var studyCount = renderGroup(studiesMount, catalog.caseStudies, "Case studies");
-    var conceptCount = renderGroup(conceptsMount, catalog.concepts, "Concept work");
-    if (soon) soon.hidden = catalog.caseStudies.length > 0;
-    var empty = document.getElementById("work-empty");
-    if (empty) empty.hidden = studyCount + conceptCount > 0;
-    var bits = [];
-    if (studyCount) bits.push(studyCount + (studyCount === 1 ? " case study" : " case studies"));
-    if (conceptCount) bits.push(conceptCount + (conceptCount === 1 ? " concept piece" : " concept pieces"));
-    announce(bits.length ? "Showing " + bits.join(" and ") + "." : "Nothing in this category yet.");
-  }
-
-  function valid(item) {
-    return item && item.title && item.category && item.media && safeSrc(item.media.src);
-  }
-
-  function setFilter(id) {
-    activeFilter = CATEGORIES[id] ? id : "all";
-    if (!filters) return;
-    filters.querySelectorAll("button").forEach(function (button) {
-      var on = button.dataset.filter === activeFilter;
-      button.setAttribute("aria-pressed", on ? "true" : "false");
+    window.addEventListener("keydown", function (event) {
+      var tag = event.target && event.target.tagName;
+      if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT" || tag === "VIDEO" || tag === "BUTTON") return;
+      if (event.metaKey || event.ctrlKey || event.altKey) return;
+      var delta = 0;
+      if (event.key === "ArrowDown") delta = 72;
+      else if (event.key === "ArrowUp") delta = -72;
+      else if (event.key === "PageDown") delta = window.innerHeight * 0.86;
+      else if (event.key === "PageUp") delta = -window.innerHeight * 0.86;
+      else if (event.key === "Home") target = 0;
+      else if (event.key === "End") target = maxScroll();
+      else if (event.key === " ") delta = event.shiftKey ? -window.innerHeight * 0.86 : window.innerHeight * 0.86;
+      else return;
+      event.preventDefault();
+      if (delta) target = clamp(target + delta);
+      kick();
     });
-    render();
+
+    scrollToY = function (y) {
+      target = clamp(y);
+      kick();
+    };
   }
 
-  if (filters) {
-    filters.addEventListener("click", function (event) {
-      var button = event.target.closest("button[data-filter]");
-      if (!button) return;
-      setFilter(button.dataset.filter);
-    });
-  }
+  document.addEventListener("click", function (event) {
+    var link = event.target.closest("a[href^='#']");
+    if (!link) return;
+    var y = anchorY(link.getAttribute("href"));
+    if (y === null) return;
+    event.preventDefault();
+    if (scrollToY && !reduce) {
+      scrollToY(y);
+      if (history.replaceState) history.replaceState(null, "", link.getAttribute("href"));
+      return;
+    }
+    var hash = link.getAttribute("href");
+    if (hash === "#top") {
+      window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
+    } else {
+      var el = document.querySelector(hash);
+      if (el) el.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+    }
+  });
 
-  if (dialog) {
-    var closer = dialog.querySelector(".dialog-close");
-    if (closer) closer.addEventListener("click", function () { dialog.close(); });
-    dialog.addEventListener("click", function (event) {
-      if (event.target === dialog) dialog.close();
+  function updateProcess() {
+    if (!steps) return;
+    var items = steps.querySelectorAll("li");
+    if (!items.length) return;
+    if (reduce) {
+      items.forEach(function (li) {
+        li.style.setProperty("--t", "1");
+        li.style.setProperty("--seg", "1");
+        li.classList.add("is-lit");
+      });
+      return;
+    }
+    var rect = steps.getBoundingClientRect();
+    var view = window.innerHeight || 800;
+    var headerH = header ? header.offsetHeight : 0;
+    var section = document.getElementById("process");
+    var sectionTop = section ? section.getBoundingClientRect().top : rect.top;
+    var intro = Math.max(0, rect.top - sectionTop);
+    // Finish as the Process anchor lands the heading under the header,
+    // so the five steps are lit once that section is in reading position.
+    var endTop = headerH + 8 + intro;
+    var startTop = Math.max(endTop + 180, Math.min(view * 0.92, endTop + view * 0.62));
+    var progress = (startTop - rect.top) / Math.max(1, startTop - endTop);
+    progress = Math.max(0, Math.min(1, progress));
+    items.forEach(function (li, index) {
+      var from = index / items.length;
+      var to = (index + 0.72) / items.length;
+      var t = (progress - from) / Math.max(0.001, to - from);
+      t = Math.max(0, Math.min(1, t));
+      li.style.setProperty("--t", t.toFixed(3));
+      li.classList.toggle("is-lit", t > 0.45);
+      var segFrom = (index + 0.35) / items.length;
+      var segTo = (index + 1.05) / items.length;
+      var seg = (progress - segFrom) / Math.max(0.001, segTo - segFrom);
+      li.style.setProperty("--seg", Math.max(0, Math.min(1, seg)).toFixed(3));
     });
   }
 
-  fetch(dataUrl)
-    .then(function (response) {
-      if (!response.ok) throw new Error("Could not load " + dataUrl);
-      return response.json();
-    })
-    .then(function (data) {
-      catalog.caseStudies = (data.caseStudies || []).filter(valid);
-      catalog.concepts = (data.concepts || []).filter(valid);
-      render();
-    })
-    .catch(function () {
-      var note = document.getElementById("work-error");
-      if (note) note.hidden = false;
-      announce("The work list could not be loaded.");
-    });
+  if (steps && !reduce) steps.classList.add("motion");
+
+  function onScroll() {
+    var y = window.scrollY || window.pageYOffset || 0;
+    if (header) header.classList.toggle("is-scrolled", y > 8);
+    if (heroMark && !reduce) {
+      var shift = Math.max(-24, Math.min(56, y * 0.1));
+      heroMark.style.transform = "translate3d(0," + shift.toFixed(2) + "px,0)";
+    }
+    updateProcess();
+  }
+
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onScroll);
+
+  var reveals = document.querySelectorAll(".reveal");
+
+  function show(el) {
+    el.classList.add("is-in");
+  }
+
+  if (reduce || !("IntersectionObserver" in window)) {
+    reveals.forEach(show);
+    document.querySelectorAll(".words").forEach(show);
+    updateProcess();
+  } else {
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        show(entry.target);
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.16, rootMargin: "0px 0px -6% 0px" });
+    reveals.forEach(function (el) { observer.observe(el); });
+  }
+
+  var sectionLinks = nav ? nav.querySelectorAll("a[href^='#']") : [];
+  var sections = [];
+  Array.prototype.forEach.call(sectionLinks, function (link) {
+    var id = link.getAttribute("href").slice(1);
+    var section = document.getElementById(id);
+    if (section) sections.push({ link: link, section: section });
+  });
+
+  if (sections.length && "IntersectionObserver" in window) {
+    var current = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        var match = sections.filter(function (item) { return item.section === entry.target; })[0];
+        if (!match || !entry.isIntersecting) return;
+        sections.forEach(function (item) { item.link.removeAttribute("aria-current"); });
+        match.link.setAttribute("aria-current", "true");
+      });
+    }, { rootMargin: "-40% 0px -45% 0px", threshold: 0 });
+    sections.forEach(function (item) { current.observe(item.section); });
+  }
+
+  var video = document.getElementById("intro-video");
+  var soundBtn = document.getElementById("sound-btn");
+  if (!video || !soundBtn) return;
+
+  video.playsInline = true;
+  video.setAttribute("playsinline", "");
+  video.setAttribute("webkit-playsinline", "");
+
+  var saveData = navigator.connection && navigator.connection.saveData;
+  var autoTried = false;
+
+  function syncSound() {
+    soundBtn.hidden = !(video.muted && !video.paused && !video.ended);
+  }
+
+  function tryAutoplay() {
+    if (autoTried || reduce || saveData) return;
+    autoTried = true;
+    video.muted = true;
+    var pending = video.play();
+    if (pending && pending.then) {
+      pending.then(syncSound).catch(function () {
+        video.muted = false;
+        syncSound();
+      });
+    } else {
+      syncSound();
+    }
+  }
+
+  soundBtn.addEventListener("click", function () {
+    video.muted = false;
+    video.volume = 1;
+    var pending = video.play();
+    if (pending && pending.catch) pending.catch(function () {});
+    syncSound();
+  });
+
+  video.addEventListener("volumechange", syncSound);
+  video.addEventListener("play", syncSound);
+  video.addEventListener("pause", syncSound);
+  video.addEventListener("ended", syncSound);
+
+  if (!reduce && !saveData && "IntersectionObserver" in window) {
+    var playObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) tryAutoplay();
+      });
+    }, { threshold: 0.45 });
+    playObserver.observe(video);
+  }
 })();
