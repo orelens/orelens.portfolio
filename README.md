@@ -1,6 +1,8 @@
 # Orelens portfolio
 
-Static site for Orelens, the Bhopal design and reels studio founded by Nikunj Soni. It presents the studio as a monthly creative team for brands in India and for agencies in the USA and Dubai.
+Static site for Orelens, the Bhopal design and reels studio founded by Nikunj Soni. It presents the studio as a monthly creative team for brands in India and for agencies in the USA and the UAE.
+
+The page is one story: an introduction, the studio film, the process from brief to delivery, and contact. Work files under `site/assets/work/` and `site/data/projects.json` stay in the repo and are not shown on the page. The film is `site/assets/video/orelens-intro.mp4` (full cut, fast start) with poster `site/assets/video/orelens-intro-poster.jpg`.
 
 **Live URL (after GitHub Pages is publishing from Actions):**
 https://orelens.github.io/orelens.portfolio/
@@ -46,11 +48,13 @@ Use the official logo files. Do not redraw the ring or the wordmark.
 | `site/assets/og.png` (and `og.webp`) | Open Graph image. The official logo on that dark field, framed at 1200×630. |
 | `site/assets/favicon-32.png`, `favicon-192.png`, `apple-touch-icon.png`, `site/favicon.ico` | Favicon, cropped from the ring area of the official logo. |
 
-Accent colours on the site are sampled from that logo’s blue-violet glow: background `#05060E`, indigo `#1F2069`, violet `#4A51B9`, glow `#8484D2`.
+The site uses the official Orelens theme: Midnight `#0B0B24`, Lens Violet `#4A4CAE`, Glow Lavender `#8585D5`, white text, and Montserrat headings.
 
 ## Add a project to the Work gallery
 
-The gallery is rendered by `site/js/main.js` from `site/data/projects.json`. There are two arrays:
+The homepage does not render this gallery. The notes below describe the files if the gallery is brought back.
+
+`site/data/projects.json` has two arrays:
 
 - `caseStudies` — further real projects for the filtered gallery. Treabrolabs is already on the page as the featured client section in `site/index.html`. If this array is empty, only that featured section and the concept tiles are shown.
 - `concepts` — fictional pieces. Each one must stay labelled as concept work.
@@ -136,8 +140,10 @@ Commit the media file and the JSON change together, then push to `main`.
 
 ## Contact details used on the site
 
-- WhatsApp (primary): [@nikunj.sonii](https://wa.me/nikunj.sonii) — label on the site: Chat on WhatsApp. WhatsApp documents this as the username link (`wa.me/YourUsername`) in [How to contact someone by username](https://faq.whatsapp.com/1561101675623754).
+- WhatsApp number: [+91 9617369907](https://wa.me/919617369907) (opens in a new tab).
+- WhatsApp username: [@nikunj.sonii](https://wa.me/nikunj.sonii) (opens in a new tab).
 - Email: [graphicdesigner.nikunj@gmail.com](mailto:graphicdesigner.nikunj@gmail.com?subject=Project%20enquiry%20from%20website). Web compose fallback: https://mail.google.com/mail/?view=cm&fs=1&to=graphicdesigner.nikunj@gmail.com&su=Project%20enquiry
+- Instagram: [@orelens_studio](https://www.instagram.com/orelens_studio/) (opens in a new tab). Use this handle only.
 - Location: Bhopal, India
 
 Plans say **Pricing on request**. Do not add prices, client counts, testimonials, awards or a founding year unless Nikunj has published them.
