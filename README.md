@@ -2,7 +2,7 @@
 
 Static site for Orelens, the Bhopal design and reels studio founded by Nikunj Soni. It presents the studio as a monthly creative team for brands in India and for agencies in the USA and the UAE.
 
-The page is one story: an introduction, the studio film, the process from brief to delivery, and contact. Work files under `site/assets/work/` and `site/data/projects.json` stay in the repo and are not shown on the page. The film is `site/assets/video/orelens-intro.mp4` (full cut, fast start) with poster `site/assets/video/orelens-intro-poster.jpg`.
+The page is one story: an introduction, the studio film, the process from brief to delivery, client work for Treabrolabs, monthly plans, and contact. `site/data/projects.json` is not rendered. The film is `site/assets/video/orelens-intro.mp4` (full cut, fast start) with poster `site/assets/video/orelens-intro-poster.jpg`.
 
 **Live URL (after GitHub Pages is publishing from Actions):**
 https://orelens.github.io/orelens.portfolio/
@@ -39,12 +39,12 @@ Open http://127.0.0.1:8080/site/ for a quick look. Relative links work when the 
 
 ## Logo
 
-The on-page mark is the official ring plus the words ORE LENS in Montserrat. Do not put the full horizontal-flare lockup in the header, hero, or footer.
+The header, hero and footer use the official transparent lockup (`ORELENS_LOGO_OFFICIAL_V1`). It sits directly on Midnight. Do not put a box, plate or extra glow behind it.
 
 | File | Use |
 |---|---|
-| `site/assets/logo/orelens-ring.png` | On-page mark. The official ring, hollowed so it blends into Midnight, with the words ORE LENS set in Montserrat. |
-| `site/assets/logo/orelens-logo.webp` and `.png` | Official full lockup. Kept for reference. The page does not use it in the header or hero, because the horizontal flare reads as an eye on this background. |
+| `site/assets/logo/orelens-logo.webp`, `orelens-logo-sm.webp` and `.png` | On-page mark. The official transparent lockup, WebP for the page and PNG as the fallback. |
+| `site/assets/logo/orelens-ring.png` | Ring cropped from the official mark. Not used in the header, hero or footer. |
 | `site/assets/logo/orelens-logo-dark.webp` and `.png` | The official mark kept on its dark navy field. |
 | `site/assets/og.png` (and `og.webp`) | Open Graph image. The official logo on that dark field, framed at 1200×630. |
 | `site/assets/favicon-32.png`, `favicon-192.png`, `apple-touch-icon.png`, `site/favicon.ico` | Favicon, cropped from the ring area of the official logo. |
@@ -53,11 +53,11 @@ The site uses the official Orelens theme: Midnight `#0B0B24`, Lens Violet `#4A4C
 
 ## Add a project to the Work gallery
 
-The homepage does not render this gallery. The notes below describe the files if the gallery is brought back.
+The homepage shows Treabrolabs in `#work`: `site/assets/work/treabrolabs/treabrolabs-v3.mp4` and the five stills already in that folder (`before-vs-after.jpg`, `dont-just-exist.jpg`, `why-manual-work.jpg`, `stop-doing-it-manually.jpg`, `welcome-digital-era.jpg`). Do not add a second copy of those files. `site/data/projects.json` is still not rendered. The notes below describe that file if a filtered gallery is brought back.
 
 `site/data/projects.json` has two arrays:
 
-- `caseStudies` — further real projects for the filtered gallery. Treabrolabs is already on the page as the featured client section in `site/index.html`. If this array is empty, only that featured section and the concept tiles are shown.
+- `caseStudies` — further real projects for a filtered gallery. Treabrolabs is already on the page in `site/index.html`. If this array is empty, only that featured section would show beside any concept tiles.
 - `concepts` — fictional pieces. Each one must stay labelled as concept work.
 
 ### 1. Add the image or video
