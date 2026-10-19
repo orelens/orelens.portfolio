@@ -39,12 +39,11 @@ Open http://127.0.0.1:8080/site/ for a quick look. Relative links work when the 
 
 ## Logo
 
-The header and footer use the full square logo as a 40px rounded icon. The hero shows that same square, uncut, as a rounded card. Do not mask it or pull the logo off its dark field.
+The page shows the name as text: ORELENS in Montserrat, white, with no image, ring, or glow. Header and footer are small. The hero wordmark is larger and sits above the headline.
 
 | File | Use |
 |---|---|
-| `site/assets/logo/orelens-mark.webp`, `orelens-mark-840.webp`, `orelens-mark-80.webp` and the PNG fallbacks | Full official square, used as-is on the page, in the favicon, and as the share image. |
-| `site/assets/favicon-32.png`, `favicon-192.png`, `apple-touch-icon.png`, `site/favicon.ico` | The same full square, resized. Not a cut-out. |
+| `site/assets/favicon-32.png`, `favicon-192.png`, `apple-touch-icon.png`, `site/favicon.ico` | Browser icon only. Not shown in the page layout. |
 
 The site uses the official Orelens theme: Midnight `#0B0B24`, Lens Violet `#4A4CAE`, Glow Lavender `#8585D5`, white text, and Montserrat headings.
 
