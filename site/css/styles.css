@@ -24,7 +24,7 @@
   --white: #ffffff;
   --mist: #f3f3fb;
   --line: rgba(133, 133, 213, 0.32);
-  --header: 7.25rem;
+  --header: 4.5rem;
   --content: 1080px;
   --sans: Inter, "Segoe UI", sans-serif;
   --display: Montserrat, "Segoe UI", sans-serif;
@@ -173,26 +173,39 @@ main,
 .brand {
   display: flex;
   align-items: center;
+  gap: 0.65rem;
   text-decoration: none;
+  color: inherit;
   flex: 0 0 auto;
 }
 
-.brand { color: inherit; }
-
-.brand-logo,
-.hero-logo,
-.footer-logo {
+.brand-mark,
+.footer-mark {
   display: block;
-  width: auto;
-  height: auto;
-  background: transparent;
-  border: 0;
-  box-shadow: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  object-fit: cover;
+  flex: none;
 }
 
-.brand-logo { width: 9.5rem; }
-.hero-logo { width: min(34rem, 88vw); }
-.footer-logo { width: 10.5rem; }
+.brand-name {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: -0.03em;
+  color: var(--white);
+  line-height: 1;
+}
+
+.hero-logo {
+  display: block;
+  width: min(420px, 78vw);
+  height: auto;
+  margin-inline: auto;
+  border-radius: 24px;
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.38);
+}
 
 .nav-toggle {
   display: none;
@@ -789,9 +802,10 @@ html.smooth-scroll { scroll-behavior: auto; }
 
 .word { display: inline-block; }
 
-.js .hero-mark {
+.js .hero-logo {
   opacity: 0;
-  animation: fade-in 1.05s ease 0.05s forwards;
+  transform: scale(0.96);
+  animation: mark-in 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.08s forwards;
 }
 
 .js .hero .words .word {
@@ -915,7 +929,6 @@ html.smooth-scroll { scroll-behavior: auto; }
 }
 
 @media (min-width: 720px) {
-  .brand-logo { width: 11.25rem; }
   .hero { padding: 3.5rem 0 2rem; }
   .band { padding: 5.25rem 0; }
   .footer-grid { grid-template-columns: 1.1fr 1fr; align-items: end; }
@@ -995,6 +1008,11 @@ html.smooth-scroll { scroll-behavior: auto; }
   to { opacity: 1; }
 }
 
+@keyframes mark-in {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: none; }
+}
+
 @keyframes write-on {
   from { transform: translateY(115%); }
   to { transform: none; }
@@ -1027,6 +1045,7 @@ html.smooth-scroll { scroll-behavior: auto; }
 
   .js .rise,
   .js .hero-mark,
+  .js .hero-logo,
   .js .reveal,
   .js .steps li,
   .js .offer li,
