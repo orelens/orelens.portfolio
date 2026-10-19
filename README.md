@@ -39,15 +39,12 @@ Open http://127.0.0.1:8080/site/ for a quick look. Relative links work when the 
 
 ## Logo
 
-The header, hero and footer use the official transparent lockup (`ORELENS_LOGO_OFFICIAL_V1`). It sits directly on Midnight. Do not put a box, plate or extra glow behind it.
+The header and footer use the full square logo as a 40px rounded icon. The hero shows that same square, uncut, as a rounded card. Do not mask it or pull the logo off its dark field.
 
 | File | Use |
 |---|---|
-| `site/assets/logo/orelens-logo.webp`, `orelens-logo-sm.webp` and `.png` | On-page mark. The official transparent lockup, WebP for the page and PNG as the fallback. |
-| `site/assets/logo/orelens-ring.png` | Ring cropped from the official mark. Not used in the header, hero or footer. |
-| `site/assets/logo/orelens-logo-dark.webp` and `.png` | The official mark kept on its dark navy field. |
-| `site/assets/og.png` (and `og.webp`) | Open Graph image. The official logo on that dark field, framed at 1200×630. |
-| `site/assets/favicon-32.png`, `favicon-192.png`, `apple-touch-icon.png`, `site/favicon.ico` | Favicon, cropped from the ring area of the official logo. |
+| `site/assets/logo/orelens-mark.webp`, `orelens-mark-840.webp`, `orelens-mark-80.webp` and the PNG fallbacks | Full official square, used as-is on the page, in the favicon, and as the share image. |
+| `site/assets/favicon-32.png`, `favicon-192.png`, `apple-touch-icon.png`, `site/favicon.ico` | The same full square, resized. Not a cut-out. |
 
 The site uses the official Orelens theme: Midnight `#0B0B24`, Lens Violet `#4A4CAE`, Glow Lavender `#8585D5`, white text, and Montserrat headings.
 
