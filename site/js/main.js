@@ -284,55 +284,86 @@
     sections.forEach(function (item) { current.observe(item.section); });
   }
 
-  var video = document.getElementById("intro-video");
-  var soundBtn = document.getElementById("sound-btn");
-  if (!video || !soundBtn) return;
-
-  video.playsInline = true;
-  video.setAttribute("playsinline", "");
-  video.setAttribute("webkit-playsinline", "");
-
   var saveData = navigator.connection && navigator.connection.saveData;
-  var autoTried = false;
 
-  function syncSound() {
-    soundBtn.hidden = !(video.muted && !video.paused && !video.ended);
-  }
+  function attachSound(video, soundBtn, autoplay) {
+    if (!video || !soundBtn) return;
+    video.playsInline = true;
+    video.setAttribute("playsinline", "");
+    video.setAttribute("webkit-playsinline", "");
+    var autoTried = false;
 
-  function tryAutoplay() {
-    if (autoTried || reduce || saveData) return;
-    autoTried = true;
-    video.muted = true;
-    var pending = video.play();
-    if (pending && pending.then) {
-      pending.then(syncSound).catch(function () {
-        video.muted = false;
+    function syncSound() {
+      soundBtn.hidden = !(video.muted && !video.paused && !video.ended);
+    }
+
+    function tryAutoplay() {
+      if (!autoplay || autoTried || reduce || saveData) return;
+      autoTried = true;
+      video.muted = true;
+      var pending = video.play();
+      if (pending && pending.then) {
+        pending.then(syncSound).catch(function () {
+          video.muted = false;
+          syncSound();
+        });
+      } else {
         syncSound();
-      });
-    } else {
+      }
+    }
+
+    soundBtn.addEventListener("click", function () {
+      video.muted = false;
+      video.volume = 1;
+      var pending = video.play();
+      if (pending && pending.catch) pending.catch(function () {});
       syncSound();
+    });
+
+    video.addEventListener("volumechange", syncSound);
+    video.addEventListener("play", syncSound);
+    video.addEventListener("pause", syncSound);
+    video.addEventListener("ended", syncSound);
+
+    if (autoplay && !reduce && !saveData && "IntersectionObserver" in window) {
+      var playObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) tryAutoplay();
+        });
+      }, { threshold: 0.45 });
+      playObserver.observe(video);
     }
   }
 
-  soundBtn.addEventListener("click", function () {
-    video.muted = false;
-    video.volume = 1;
-    var pending = video.play();
-    if (pending && pending.catch) pending.catch(function () {});
-    syncSound();
-  });
+  attachSound(document.getElementById("intro-video"), document.getElementById("sound-btn"), true);
+  attachSound(document.getElementById("work-video"), document.getElementById("work-sound-btn"), false);
 
-  video.addEventListener("volumechange", syncSound);
-  video.addEventListener("play", syncSound);
-  video.addEventListener("pause", syncSound);
-  video.addEventListener("ended", syncSound);
-
-  if (!reduce && !saveData && "IntersectionObserver" in window) {
-    var playObserver = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) tryAutoplay();
+  var lightbox = document.getElementById("lightbox");
+  var lightboxImg = lightbox ? lightbox.querySelector("img") : null;
+  var lightboxClose = lightbox ? lightbox.querySelector(".lightbox-close") : null;
+  if (lightbox && lightboxImg) {
+    document.querySelectorAll(".work-card").forEach(function (card) {
+      card.addEventListener("click", function () {
+        var img = card.querySelector("img");
+        if (!img) return;
+        lightboxImg.src = img.currentSrc || img.src;
+        lightboxImg.alt = img.alt;
+        if (lightbox.showModal) lightbox.showModal();
       });
-    }, { threshold: 0.45 });
-    playObserver.observe(video);
+    });
+    lightbox.addEventListener("click", function (event) {
+      if (event.target === lightboxClose) return;
+      var rect = lightboxImg.getBoundingClientRect();
+      var inside = event.clientX >= rect.left && event.clientX <= rect.right && event.clientY >= rect.top && event.clientY <= rect.bottom;
+      if (!inside) lightbox.close();
+    });
+    if (lightboxClose) {
+      lightboxClose.addEventListener("click", function () {
+        lightbox.close();
+      });
+    }
+    lightbox.addEventListener("close", function () {
+      lightboxImg.removeAttribute("src");
+    });
   }
 })();

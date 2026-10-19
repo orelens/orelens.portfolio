@@ -29,7 +29,7 @@
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="icon" href="assets/favicon-192.png" type="image/png" sizes="192x192">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-  <link rel="preload" as="image" href="assets/logo/orelens-ring.png" type="image/png">
+  <link rel="preload" as="image" href="assets/logo/orelens-logo.webp" type="image/webp">
   <link rel="preload" href="assets/fonts/montserrat-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/styles.css">
@@ -42,7 +42,7 @@
     "description": "Design and reels studio in Bhopal. A monthly creative team for brands in India and agencies in the USA and the UAE.",
     "url": "https://orelens.github.io/orelens.portfolio/",
     "image": "https://orelens.github.io/orelens.portfolio/assets/og.png",
-    "logo": "https://orelens.github.io/orelens.portfolio/assets/logo/orelens-logo-dark.png",
+    "logo": "https://orelens.github.io/orelens.portfolio/assets/logo/orelens-logo.png",
     "email": "graphicdesigner.nikunj@gmail.com",
     "telephone": "+91-9617369907",
     "address": {
@@ -85,10 +85,10 @@
   <header class="site-header">
     <div class="header-bar">
       <a class="brand" href="#top" aria-label="Orelens">
-        <span class="lockup" aria-hidden="true">
-          <img class="lockup-ring" src="assets/logo/orelens-ring.png" alt="" width="1040" height="1040">
-          <span class="lockup-word">ORE LENS</span>
-        </span>
+        <picture>
+          <source type="image/webp" srcset="assets/logo/orelens-logo-sm.webp 480w, assets/logo/orelens-logo.webp 860w" sizes="(min-width: 720px) 180px, 152px">
+          <img class="brand-logo" src="assets/logo/orelens-logo.png" width="860" height="520" alt="">
+        </picture>
       </a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
         <span></span>
@@ -97,6 +97,8 @@
         <ul>
           <li><a href="#film">Film</a></li>
           <li><a href="#process">Process</a></li>
+          <li><a href="#work">Work</a></li>
+          <li><a href="#plans">Plans</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
         <a class="btn btn-primary" href="https://wa.me/919617369907" target="_blank" rel="noopener">
@@ -111,10 +113,10 @@
     <section class="hero" aria-labelledby="hero-title">
       <div class="wrap hero-inner">
         <div class="hero-mark">
-          <div class="lockup lockup-hero" role="img" aria-label="Orelens">
-            <img class="lockup-ring" src="assets/logo/orelens-ring.png" alt="" width="1040" height="1040">
-            <span class="lockup-word">ORE LENS</span>
-          </div>
+          <picture>
+            <source type="image/webp" srcset="assets/logo/orelens-logo.webp" sizes="(min-width: 720px) 560px, 88vw">
+            <img class="hero-logo" src="assets/logo/orelens-logo.png" width="860" height="520" alt="Orelens">
+          </picture>
         </div>
         <div class="hero-copy">
           <p class="kicker words">Design &amp; reels studio · Bhopal</p>
@@ -223,6 +225,97 @@
       </div>
     </section>
 
+    <section class="band" id="work" aria-labelledby="work-title">
+      <div class="wrap">
+        <div class="section-intro reveal">
+          <p class="kicker">Work</p>
+          <h2 id="work-title" class="words">Client work: Treabrolabs</h2>
+          <p>Treabrolabs is an automation partner that builds the system for you.</p>
+        </div>
+        <div class="work-layout">
+          <figure class="work-film reveal">
+            <div class="work-frame">
+              <video
+                id="work-video"
+                controls
+                playsinline
+                webkit-playsinline
+                preload="metadata"
+                muted
+                poster="assets/work/treabrolabs/treabrolabs-v3-poster.jpg"
+                width="1080"
+                height="1920"
+                aria-label="Treabrolabs film, 54 seconds."
+              >
+                <source src="assets/work/treabrolabs/treabrolabs-v3.mp4" type="video/mp4">
+                <p>This browser cannot play the film. The file is an MP4.</p>
+              </video>
+              <button class="sound-btn" id="work-sound-btn" type="button" hidden>Unmute</button>
+            </div>
+            <figcaption>Treabrolabs · 54 seconds · sound is on when you press play. If the film starts quietly, use Unmute.</figcaption>
+          </figure>
+          <ul class="work-grid">
+            <li>
+              <button class="work-card reveal" type="button" style="--i:0">
+                <img src="assets/work/treabrolabs/before-vs-after.jpg" width="1080" height="1080" alt="Treabrolabs creative. Before vs After: manual work beside an automated workflow.">
+              </button>
+            </li>
+            <li>
+              <button class="work-card reveal" type="button" style="--i:1">
+                <img src="assets/work/treabrolabs/dont-just-exist.jpg" width="1080" height="1080" alt="Treabrolabs creative. Don’t just exist. Automate. A robot hand holds a glowing sphere.">
+              </button>
+            </li>
+            <li>
+              <button class="work-card reveal" type="button" style="--i:2">
+                <img src="assets/work/treabrolabs/why-manual-work.jpg" width="1080" height="1080" alt="Treabrolabs creative. Why manual work, set on a Nokia phone.">
+              </button>
+            </li>
+            <li>
+              <button class="work-card reveal" type="button" style="--i:3">
+                <img src="assets/work/treabrolabs/stop-doing-it-manually.jpg" width="1080" height="1080" alt="Treabrolabs creative. Stop doing it manually, with a hand pressing a red button.">
+              </button>
+            </li>
+            <li>
+              <button class="work-card reveal" type="button" style="--i:4">
+                <img src="assets/work/treabrolabs/welcome-digital-era.jpg" width="1080" height="1350" alt="Treabrolabs creative. Welcome to the digital era, on a dark grid.">
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="band band-plans" id="plans" aria-labelledby="plans-title">
+      <div class="wrap">
+        <div class="section-intro reveal">
+          <p class="kicker">Plans</p>
+          <h2 id="plans-title" class="words">Monthly plans</h2>
+          <p class="plans-note">Custom quotes for USA/UAE agencies</p>
+        </div>
+        <ul class="plans">
+          <li class="plan reveal" style="--i:0">
+            <h3>Starter</h3>
+            <p class="price"><span>₹5,000</span> <small>/ month</small></p>
+            <p class="plan-detail">Core posts</p>
+            <a class="btn btn-ghost" href="https://wa.me/919617369907" target="_blank" rel="noopener">Get started</a>
+          </li>
+          <li class="plan plan-popular reveal" style="--i:1">
+            <p class="plan-badge">Most popular</p>
+            <h3>Growth</h3>
+            <p class="price"><span>₹10,000</span> <small>/ month</small></p>
+            <p class="plan-detail">Posts + stories/reels support</p>
+            <a class="btn btn-primary" href="https://wa.me/919617369907" target="_blank" rel="noopener">Get started</a>
+          </li>
+          <li class="plan reveal" style="--i:2">
+            <h3>Premium</h3>
+            <p class="price"><span>₹20,000</span> <small>/ month</small></p>
+            <p class="plan-detail">Full creative system</p>
+            <a class="btn btn-ghost" href="https://wa.me/919617369907" target="_blank" rel="noopener">Get started</a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
     <section class="band" id="contact" aria-labelledby="contact-title">
       <div class="wrap contact-layout">
         <div class="section-intro reveal">
@@ -275,15 +368,20 @@
   <footer class="site-footer">
     <div class="wrap footer-grid">
       <div>
-        <div class="lockup lockup-footer" role="img" aria-label="Orelens">
-          <img class="lockup-ring" src="assets/logo/orelens-ring.png" alt="" width="1040" height="1040">
-          <span class="lockup-word">ORE LENS</span>
-        </div>
+        <picture>
+          <source type="image/webp" srcset="assets/logo/orelens-logo-sm.webp 480w, assets/logo/orelens-logo.webp 860w" sizes="168px">
+          <img class="footer-logo" src="assets/logo/orelens-logo.png" width="860" height="520" alt="Orelens">
+        </picture>
         <p>Design and reels studio · Bhopal, India</p>
       </div>
       <p class="fine">© 2026 Orelens. Social creatives, ads, posters, thumbnails, branding, logos and reels for brands and agencies.</p>
     </div>
   </footer>
+
+  <dialog class="lightbox" id="lightbox" aria-label="Creative">
+    <button class="lightbox-close" type="button">Close</button>
+    <img alt="">
+  </dialog>
 
   <script src="js/main.js"></script>
 </body>
