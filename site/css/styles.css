@@ -595,6 +595,17 @@ section { scroll-margin-top: calc(var(--header) + 0.6rem); }
   font-size: 0.95rem;
 }
 
+.work-project + .work-project { margin-top: 3rem; }
+
+.work-project-head {
+  max-width: 38rem;
+  margin-bottom: 1.25rem;
+}
+
+.work-project-head h3 { margin-bottom: 0.35rem; }
+
+.work-project-head p:last-child { margin-bottom: 0; }
+
 .work-layout { display: grid; gap: 1.35rem; }
 
 .work-film { margin: 0; }
@@ -624,6 +635,16 @@ section { scroll-margin-top: calc(var(--header) + 0.6rem); }
   color: var(--glow);
   font-size: 0.92rem;
   max-width: 320px;
+}
+
+.work-frame-wide { max-width: none; }
+
+.work-frame-wide video { aspect-ratio: 16 / 9; }
+
+.work-film-wide figcaption {
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .work-grid {

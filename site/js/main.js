@@ -337,6 +337,7 @@
 
   attachSound(document.getElementById("intro-video"), document.getElementById("sound-btn"), true);
   attachSound(document.getElementById("work-video"), document.getElementById("work-sound-btn"), false);
+  attachSound(document.getElementById("atithi-video"), document.getElementById("atithi-sound-btn"), false);
 
   var lightbox = document.getElementById("lightbox");
   var lightboxImg = lightbox ? lightbox.querySelector("img") : null;
