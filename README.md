@@ -2,7 +2,7 @@
 
 Static site for Orelens, the Bhopal design and reels studio founded by Nikunj Soni. It presents the studio as a monthly creative team for brands in India and for agencies in the USA and the UAE.
 
-The page is one story: an introduction, the studio film, the process from brief to delivery, client work for Treabrolabs, monthly plans, and contact. `site/data/projects.json` is not rendered. The film is `site/assets/video/orelens-intro.mp4` (full cut, fast start) with poster `site/assets/video/orelens-intro-poster.jpg`.
+The page is one story: an introduction, the studio film, the process from brief to delivery, client work for Treabrolabs and AtithiConnect, monthly plans, and contact. `site/data/projects.json` is not rendered. The film is `site/assets/video/orelens-intro.mp4` (full cut, fast start) with poster `site/assets/video/orelens-intro-poster.jpg`.
 
 **Live URL (after GitHub Pages is publishing from Actions):**
 https://orelens.github.io/orelens.portfolio/
@@ -49,7 +49,7 @@ The site uses the official Orelens theme: Midnight `#0B0B24`, Lens Violet `#4A4C
 
 ## Add a project to the Work gallery
 
-The homepage shows Treabrolabs in `#work`: `site/assets/work/treabrolabs/treabrolabs-v3.mp4` and the five stills already in that folder (`before-vs-after.jpg`, `dont-just-exist.jpg`, `why-manual-work.jpg`, `stop-doing-it-manually.jpg`, `welcome-digital-era.jpg`). Do not add a second copy of those files. `site/data/projects.json` is still not rendered. The notes below describe that file if a filtered gallery is brought back.
+The homepage shows two client blocks in `#work`. Treabrolabs uses `site/assets/work/treabrolabs/treabrolabs-v3.mp4` and the five stills already in that folder (`before-vs-after.jpg`, `dont-just-exist.jpg`, `why-manual-work.jpg`, `stop-doing-it-manually.jpg`, `welcome-digital-era.jpg`). Do not add a second copy of those files. AtithiConnect is the promo at `site/assets/work/atithiconnect/atithiconnect.mp4`. `site/data/projects.json` is still not rendered. The notes below describe that file if a filtered gallery is brought back.
 
 `site/data/projects.json` has two arrays:
 
