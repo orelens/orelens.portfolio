@@ -741,9 +741,36 @@ section { scroll-margin-top: calc(var(--header) + 0.6rem); }
   color: var(--glow-bright);
 }
 
-.plan-detail {
-  margin: 0 0 1.1rem;
+.plan-list {
+  list-style: none;
+  margin: 0.45rem 0 1.15rem;
+  padding: 0;
+  display: grid;
+  gap: 0.38rem;
+}
+
+.plan-list li {
+  position: relative;
+  margin: 0;
+  padding-left: 1.35rem;
   color: var(--mist);
+  font-size: 0.92rem;
+  line-height: 1.35;
+}
+
+.plan-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--glow);
+  font-weight: 700;
+}
+
+.plans-footnote {
+  margin: 1.15rem 0 0;
+  color: var(--glow);
+  font-size: 0.92rem;
 }
 
 .plan .btn { margin-top: auto; }
